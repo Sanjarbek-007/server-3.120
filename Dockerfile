@@ -6,6 +6,9 @@ COPY . .
 RUN go build -o myapp
 
 FROM debian:bookworm-slim 
+
 WORKDIR /root/
+
 COPY --from=builder /app/myapp .
+
 CMD ["./myapp"]
