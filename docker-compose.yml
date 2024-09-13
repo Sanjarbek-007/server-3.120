@@ -17,6 +17,8 @@ services:
       interval: 10s
       retries: 5
       timeout: 5s
+    networks:
+      - my_network
 
   app:
     container_name: auth
@@ -26,6 +28,11 @@ services:
     depends_on:
       postgres2:
         condition: service_healthy
+    networks:
+      - my_network
 
 volumes:
   postgres4_data:
+
+networks:
+  my_network:
