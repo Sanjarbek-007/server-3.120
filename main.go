@@ -34,7 +34,7 @@ func main() {
 
 	r.POST("/user/register", registerUser)
 	r.GET("/user/list", listUsers)
-	r.PUT("/user/update/:id", updateUser)  // Add update route
+	r.PUT("/user/update/:id", updateUser)
 	r.GET("/health", health)
 
 	fmt.Println("Server 2 is running on :8082")
@@ -109,7 +109,8 @@ func updateUser(c *gin.Context) {
 		return
 	}
 
-	stmt, err := db.Prepare("UPDATE users SET username=$1, email=$2 WHERE id=$3")
+	stmt, err := db.Prepare(`UPDATE users SET username=$1, email=$2 WHERE id=$3;
+							UPDATE users_server1 SET username=$1, email=$2 WHERE id=$3;`)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		log.Printf("Prepare error: %v", err)
