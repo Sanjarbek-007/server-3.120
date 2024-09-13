@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  postgres2:
+  postgres1:
     image: postgres:15
     environment:
       POSTGRES_DB: server2_db
@@ -17,8 +17,6 @@ services:
       interval: 10s
       retries: 5
       timeout: 5s
-    networks:
-      - my_network
 
   app:
     container_name: auth
@@ -26,13 +24,8 @@ services:
     ports:
       - "8082:8082"
     depends_on:
-      postgres2:
+      postgres1:
         condition: service_healthy
-    networks:
-      - my_network
 
 volumes:
   postgres4_data:
-
-networks:
-  my_network:
