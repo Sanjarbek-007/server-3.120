@@ -13,6 +13,8 @@ services:
     volumes:
       - postgres1_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app_network  # Tarmoqqa ulash
 
   app:
     build: .
