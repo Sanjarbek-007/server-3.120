@@ -175,3 +175,4 @@ func DeleteUser(id int) (bool, error) {
 
 	return true, nil
 }
+
