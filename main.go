@@ -27,8 +27,8 @@ func main() {
 	r.DELETE("/user/delete/:id", deleteUser)
 	r.GET("/health", health)
 
-	fmt.Println("Server is running on :8081")
-	if err := r.Run(":8081"); err != nil {
+	fmt.Println("Server is running on :8082")
+	if err := r.Run(":8082"); err != nil {
 		log.Fatal(err)
 	}
 }
