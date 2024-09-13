@@ -1,18 +1,17 @@
-FROM golang:1.23.1 AS builder
+FROM golang:1.21 AS builder
 
 WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
+COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
 
 RUN go build -o main .
 
-FROM golang:1.23.1
+FROM debian:bullseye-slim
 
-WORKDIR /app
+WORKDIR /root/
 
 COPY --from=builder /app/main .
 
