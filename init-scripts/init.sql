@@ -7,8 +7,8 @@ CREATE TABLE users (
 );
 
 -- Server1 uchun
-CREATE SERVER server1_fdw FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host '13.38.70.151', port '5432', dbname 'server1_db');
-CREATE USER MAPPING FOR postgres SERVER server1_fdw OPTIONS (user 'postgres', password 'your_password');
+CREATE SERVER server1_fdw FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host '3.75.208.130', port '5432', dbname 'server1_db');
+CREATE USER MAPPING FOR postgres SERVER server1_fdw OPTIONS (user 'postgres', password '1111');
 CREATE FOREIGN TABLE users_server1 (
     id INTEGER,
     username VARCHAR(50),
